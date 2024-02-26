@@ -1,0 +1,253 @@
+*{
+    margin:0;
+    padding:0;
+    top:0;
+    bottom:0;
+  }
+  
+
+  
+ 
+  .login{
+    font-size: 24px;
+    font-weight:500;
+    text-transform: uppercase;
+    line-height: normal;
+  }
+  @font-face{
+    font-family:FullSans;
+    src:url(../fonts/FullSansLCBook.otf);
+  }
+  
+  
+
+  
+  .para{
+    color: #FFF;
+    margin-bottom:80px;
+  }
+  
+  .loginpage p{
+    color: #FFF;
+  
+    text-align: center;
+    font-family: FullSans;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin-top:10px;
+  }
+  
+  
+  .loginpage p{
+    margin-bottom:80px;
+  }
+  .Button{
+  color:white;
+  display: flex;
+  width: 27vw;
+  height: 50px;
+  padding: 0px 24px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+  border-radius: 12px;
+  border: 1px solid #FFF;
+  
+  background: #690D93;
+ 
+  margin-top:45px;
+  }
+  ::placeholder{
+    color:white;
+    font-family:FullSans;
+    font-size: 24px;
+    font-weight: 400;
+    padding:24px;
+  }
+  
+  .item{
+  width: 1660px;
+  height:700px;
+  flex-shrink: 0;
+  border-radius: 40px;
+  background: #260536;
+  margin-top:48px;
+  
+  box-shadow: 6px 10px 25px 0px rgba(0, 0, 0, 0.30);
+  }
+
+ 
+ 
+  .body{
+    position:absolute;
+    margin-top:200px;
+  }
+  .forgotpass{
+    color:#690D93 !important;
+    margin-top: 15px;
+    font-family: FullSans;
+    /* font-weight: 900; */
+    /* margin-left:210px; */
+    font-size: 30px;
+    display:flex;
+    justify-content: center;
+    
+  }
+  
+  @media screen and (max-width:985px) {
+  
+  
+  
+  .images img{
+    width:171px;
+    height:171px;
+    position:unset;
+    margin-bottom:10px;
+  }
+  
+  /* .images{
+    display:flex;
+    justify-content: center;
+    margin-bottom:-120px;
+  } */
+  
+  .form{
+    min-height: 100vh;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+  
+  
+  }
+ 
+  
+  
+  }
+  @media screen and (max-width:431px) {
+   
+   
+  }
+ 
+ /* form here it begins */
+
+ .login-container{
+  background:#2F0443;
+  border-radius: 20px;
+  height:95vh;
+  display:flex;
+  align-items: center;
+  
+  justify-content: center;
+  /* height:85vh; */
+}
+ .images{
+  display:flex;
+  align-items: center;
+  justify-content: center;
+ }
+ .loginpage
+ {
+  width:700px;
+ height:510px;
+ flex-shrink: 0;
+ border-radius: 40px;
+ background: #260536;
+ 
+ box-shadow: 6px 10px 25px 0px rgba(0, 0, 0, 0.30);
+
+ }
+ .welcome{
+  color: #FFF;
+  font-family:FullSans;
+  text-align: center;
+  font-size: 48px;
+  font-weight: 600;
+  line-height:57.6px;
+  margin-top:50px;
+  text-transform: uppercase;
+  }
+ .header h1{
+  text-transform: uppercase;
+  /* font-size: 40px; */
+}
+
+.username{
+  display: flex;
+  width:95%;
+  height: 60px;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+  border-radius: 12px;
+  border: 1px solid #690D93;
+
+  background: #2F0443;
+  margin-left:20px;
+  margin-bottom:24px;
+}
+.password
+  {
+    display: flex;
+    width:95%;
+    height:50px;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+    border-radius: 12px;
+    border: 1px solid #690D93;
+    
+    background: #2F0443;
+    margin-left:20px;
+    margin-top:-8px;
+  }
+  
+  .loginform{
+    position:relative;
+  }
+  .eye{
+  
+    color:white;
+    position:absolute;
+    right:0;
+    top:85px;
+    right:17px;
+  
+    }
+    .login-button{
+      display:flex;
+      justify-content: center;
+    }
+    .login-332{
+      display:flex;
+      justify-content: center;
+    }
+    @media screen and (max-width:1416px) {
+      
+      .xitoimg{
+        width:120px;
+      }
+
+    }
+    .login-bg {
+      overflow-y: scroll;
+      background-color: #2F0443;
+      height:100vh;
+      /* height: 100vh;
+      width:100vw; */
+    }
+    .fixed-top{
+        position:unset;
+    }
+
+    /* .eye{
+  
+      color:white;
+      position:absolute;
+      right:0;
+      top:80px;
+      right:17px;
+      } */
+ 
