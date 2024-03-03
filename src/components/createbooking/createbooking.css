@@ -1,0 +1,12 @@
+.container-xxs{
+    background-color: #a48e8e;
+    height: 93vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.createbookingpage{
+    width: 1100px;
+    height: 600px;
+    background-color: #594c4c;
+}

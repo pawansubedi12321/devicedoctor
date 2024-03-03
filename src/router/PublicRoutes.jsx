@@ -21,6 +21,7 @@ import Category from "../components/Category";
 import AddCategory from "../components/addcategory/AddCategory";
 import ProblemList from "../components/problem/problemlist";
 import Addproblem from "../components/problem/Addproblem";
+import CreateBooking from "../components/createbooking/CreateBooking";
 const PublicRoutes = () => {
     
   return (
@@ -33,6 +34,7 @@ const PublicRoutes = () => {
             <Route path='/addcategory'element={<AddCategory/>}></Route>
             <Route path='/problemlist'element={<ProblemList/>}></Route>
             <Route path='/addproblem'element={<Addproblem/>}></Route>
+            <Route path='/createbooking'element={<CreateBooking/>}></Route>
             {/* <Route path="/"element={<LoginPage/>}></Route>
             <Route path="/dashboard"element={<Dashboard/>}></Route> 
             <Route path="/CategoryPage"element={<CategoryPage/>}></Route> 

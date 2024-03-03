@@ -240,6 +240,7 @@
     }
     .fixed-top{
         position:unset;
+        height:7vh;
     }
 
     /* .eye{
