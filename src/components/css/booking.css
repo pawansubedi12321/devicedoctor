@@ -1,0 +1,95 @@
+.booking-xxs{
+ 
+
+    width:100%;
+    height:93vh;
+    flex-shrink: 0;
+    background: #2F0443;
+    backdrop-filter: blur(25px);
+    
+    }
+.booking-list{
+    /* height:93vh; */
+    /* background-color: red; */
+    overflow-y: scroll;
+}
+.booking-image{
+    height:120px;
+    /* background-color: green; */
+}
+.details{
+    /* background-color: red; */
+    height:120px;
+    color:#FFF;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.status{
+   
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
+.appoint{
+    width:260px;
+    height:60px;
+    background-color:orange;
+    border-radius: 10px;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+
+}
+.pending{
+    width:260px;
+    height:60px;
+    background-color:yellow;
+    border-radius: 10px;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+
+}
+.onwork{
+    width:260px;
+    height:60px;
+    background-color:red;
+    border-radius: 10px;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+
+}
+.completed{
+    width:260px;
+    height:60px;
+    background-color:green;
+    border-radius: 10px;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+
+}
+.receptionname{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    color:#FFF;
+}
+.show-booking{
+    background-color:#3f219a;
+    width:45px;
+    height:45px;
+    border-radius: 10px;
+    color:#FFF;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+ .showpage{
+    display:flex;
+    align-items:center;
+    justify-content: end;
+}

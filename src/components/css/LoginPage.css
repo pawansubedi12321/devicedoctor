@@ -241,6 +241,7 @@
     .fixed-top{
         position:unset;
         height:7vh;
+        background-color: #980ed9 !important;
     }
 
     /* .eye{

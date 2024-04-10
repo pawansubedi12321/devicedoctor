@@ -1,19 +1,21 @@
 .addcategory{
-    background-color: red;
+    background-color:#a803f5;
     height:auto;
     width:80vw;
 }
 .categorytext{
-    background-color: #626273 !important;
-    padding-left:100px;
-    width:100%;
+    background-color: #7204a5  !important;
+    /* padding-left:100px; */
+    /* width:100%; */
     height:50px;
     border-radius: 10px;
+    width:20vw;
 }
 .category-image{
     display:flex;
     justify-content: center;
     position:relative;
+    margin-top:20px;
     
 }
 .add-category-image{
@@ -44,7 +46,8 @@
 .nameandtext{
     position:relative;
     display:flex;
-    align-items: center;
+    justify-content: center;
+    margin-top:20px;
 }
 .categoryname{
     margin-left:10px;
@@ -64,15 +67,16 @@
     width:190px;
     height:50px;
     border-radius: 10px;
-    background-color: red;
+    background-color: #a351ca;
 }
 .addpage{
     height:100vh;
-    background-color: #a48e8e;
+    background-color: #2F0443;
     overflow-y: scroll;
     display:flex;
     align-items: center;
     justify-content: center;
+    /* filter:blur(1px) */
     /* display:flex;
     align-items: center;
     justify-content: center; */

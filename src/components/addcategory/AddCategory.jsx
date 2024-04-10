@@ -10,7 +10,6 @@ const AddCategory = () => {
   const navigate = useNavigate();
   const imagefile = (e) => {
     let x = e.target.files[0];
-    // x=x.name
 
     setimagewithouturl(x);
 
@@ -75,7 +74,6 @@ const AddCategory = () => {
     <div>
       <div className="addpage">
         <div className="addcategory">
-          <p>Hello world</p>
           <form method="post">
             <div className="category-image">
               <input type="file" onChange={imagefile} className="file-image" />
@@ -91,7 +89,7 @@ const AddCategory = () => {
               )}
             </div>
             <div className="nameandtext">
-              <label className="categoryname">Name:</label>
+              
               <input
                 onChange={categorytext}
                 type="text"

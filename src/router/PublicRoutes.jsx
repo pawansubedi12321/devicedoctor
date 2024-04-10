@@ -22,6 +22,8 @@ import AddCategory from "../components/addcategory/AddCategory";
 import ProblemList from "../components/problem/problemlist";
 import Addproblem from "../components/problem/Addproblem";
 import CreateBooking from "../components/createbooking/CreateBooking";
+import Booking from "../components/Booking";
+import ShowBooking from "../components/createbooking/ShowBooking";
 const PublicRoutes = () => {
     
   return (
@@ -35,6 +37,8 @@ const PublicRoutes = () => {
             <Route path='/problemlist'element={<ProblemList/>}></Route>
             <Route path='/addproblem'element={<Addproblem/>}></Route>
             <Route path='/createbooking'element={<CreateBooking/>}></Route>
+            <Route path='/booking'element={<Booking/>}></Route>
+            <Route path='/showbooking'element={<ShowBooking/>}></Route>
             {/* <Route path="/"element={<LoginPage/>}></Route>
             <Route path="/dashboard"element={<Dashboard/>}></Route> 
             <Route path="/CategoryPage"element={<CategoryPage/>}></Route> 
