@@ -14,12 +14,12 @@
     overflow-y: scroll;
 }
 .booking-image{
-    height:120px;
+    height:100px;
     /* background-color: green; */
 }
 .details{
     /* background-color: red; */
-    height:120px;
+    height:100px;
     color:#FFF;
     display:flex;
     flex-direction: column;
@@ -92,4 +92,7 @@
     display:flex;
     align-items:center;
     justify-content: end;
+}
+.categorytext::placeholder{
+    font-size: 15px;
 }

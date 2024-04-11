@@ -42,7 +42,38 @@ const Category = () => {
         navigate('/problemlist',{state:ind});
 
      }
-    //  `https://pawan12.pythonanywhere.com${item.image}`
+     const editcategory=(item)=>{
+      navigate('/editcategory',{state:item});
+      console.log("this is edit category");
+     }
+     const deletecategory=async(item)=>{
+      try {
+        const response = await fetch(`http://127.0.0.1:8000/api/v1/user/getcategory/${item}/`, {
+            method: "DELETE",
+        });
+        
+        if (!response.ok) {
+            throw new Error("Delete failed"); // Handle error response
+        }
+        
+        console.log("Category deleted successfully");
+        
+        // Redirect user or perform further actions
+    } catch (error) {
+        console.error("Error:", error);
+        // Handle error
+    }
+
+    fetch(`http://127.0.0.1:8000/api/v1/user/getcategory/${x}/`) // Replace 'API_ENDPOINT' with your actual API URL
+          .then(response => response.json())
+          .then(data => {
+           
+            setcategory(data);
+          })
+          .catch(error => {
+            console.error('Error fetching image data:', error);
+          });
+     }
     
 
   return (
@@ -56,10 +87,10 @@ const Category = () => {
             <>
            
                 <div className='categoryimage'>
-                <div className='edit edit-category'>
+                <div className='edit edit-category'onClick={()=>editcategory(item.id)}>
             <ModeEditIcon/>
                 </div>
-        <div className='delete delete-category'>
+        <div className='delete delete-category'onClick={()=>deletecategory(item.id)}>
           <ClearIcon/>
         </div>
                 

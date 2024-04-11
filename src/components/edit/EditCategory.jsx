@@ -1,13 +1,18 @@
 import React, { useState, useEffect } from "react";
-import "./AddCategory.css";
+// import "./AddCategory.css";
 import Image from "./assets/img.png";
 import { useNavigate } from "react-router-dom";
-const AddCategory = () => {
-  const [clickimage, setclickimage] = useState("");
+import axios from 'axios'
+import { useLocation } from 'react-router-dom';
+const EditCategory = () => {
+  const {state}=useLocation();
+    const [clickimage, setclickimage] = useState("");
   const [backgroundimage, setbackgroundimage] = useState(false);
   const [categorytextstate, setcategorytextstate] = useState("");
   const [imagewithouturl, setimagewithouturl] = useState("");
   const navigate = useNavigate();
+
+  console.log("this is state",state);
   const imagefile = (e) => {
     let x = e.target.files[0];
 
@@ -28,47 +33,50 @@ const AddCategory = () => {
       setbackgroundimage(!backgroundimage);
     }
   };
-
+//  console.log("this is image without url",imagewithouturl)
   
   const categorytext = (e) => {
     const x = e.target.value;
     setcategorytextstate(x);
   };
-  const savecategorybtn = async (e) => {
-    e.preventDefault();
-    const x = localStorage.getItem("id");
-    const formData = new FormData();
-    formData.append("user", x);
-    formData.append("name", categorytextstate);
-    formData.append("image", imagewithouturl);
+  const user = localStorage.getItem("id");
+  const savecategorybtn=async()=>{
 
     try {
-      const response = await fetch(
-        "http://127.0.0.1:8000/api/v1/user/addcategory/",
-        {
-          method: "POST",
-          body: formData,
-        }
-      );
+      const datavalue={
+        name:categorytextstate,
+        user:user,
+        image:imagewithouturl.name
 
-      // Check if the request was successful (status code 200-299)
-      if (response.ok) {
-        const responseData = await response.json(); // Parse response JSON
-        console.log(responseData);
-        navigate("/category");
-
-        //   // Log the response data
-        //   navigate('/dashboard',{state:responseData});
-      } else {
-        console.error("Request failed with status:", response.status);
       }
-    } catch (error) {
+      const response = await fetch(`http://127.0.0.1:8000/api/v1/user/getcategory/${state}/`, {
+          method: "PUT",
+          body: JSON.stringify(datavalue), // Assuming datavalue contains login data
+          headers: {
+              "Content-Type": "application/json",
+          },
+      });
+      
+      if (!response.ok) {
+          throw new Error("Login failed"); // Handle error response
+      }
+      
+      // Assuming the response contains some data after successful login
+      const responseData = await response.json();
+      
+      // Handle the response data as needed
+      console.log(responseData);
+      
+      // Redirect user or perform further actions
+  } catch (error) {
       console.error("Error:", error);
-    }
-  };
+      // Handle error
+  }
+
+  }
   return (
     <div>
-      <div className="addpage">
+        <div className="addpage">
         <div className="addcategory">
           <form method="post">
             <div className="category-image">
@@ -90,7 +98,7 @@ const AddCategory = () => {
                 onChange={categorytext}
                 type="text"
                 class="categorytext"
-                placeholder="             Enter a category name"
+                placeholder="Enter a category name"
               />
             </div>
 
@@ -104,9 +112,9 @@ const AddCategory = () => {
             </div>
           </form>
         </div>
-      </div>
+        </div>
     </div>
-  );
-};
+  )
+}
 
-export default AddCategory;
+export default EditCategory
