@@ -61,6 +61,7 @@
     background-color: #7204a5;
     padding-left:30px;
     border-radius: 10px;
+    color:#FFF;
     
 }
 .interval-text{
@@ -69,6 +70,7 @@
     background-color: #7204a5;
     padding-left:30px;
     border-radius: 10px;
+    color:#FFF;
     
 
 }
@@ -93,9 +95,7 @@
     display:flex;
     align-items: center;
 }
-/* .est-amnt-text{
-    position:relative;
-} */
+
 .text-432{
     position:absolute;
     right:100px;
@@ -114,22 +114,22 @@
     opacity: 0;
 }
 .button, input, optgroup, select, textarea{
-    /* font-size: unset; */
+    
     font-size: small;
 }
 .add-image-xxd{
     position:relative;
 }
 .addimage{
-    /* width:31vw; */
+   
     width:30vw;
     
-    /* position:absolute; */
+
 }
 .image-savebtn{
     display: flex;
     flex-direction: column;
-    /* justify-content: center; */
+    
     align-items: center;
 }
 .save-addprob-btn{

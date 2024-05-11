@@ -15,7 +15,7 @@ const Category = () => {
     const x = localStorage.getItem("id");
     useEffect(() => {
         // Fetch image data from API
-        fetch(`http://127.0.0.1:8000/api/v1/user/getcategory/${x}/`) // Replace 'API_ENDPOINT' with your actual API URL
+        fetch(`https://pawan2221.pythonanywhere.com/api/v1/user/getcategory/${x}/`) // Replace 'API_ENDPOINT' with your actual API URL
           .then(response => response.json())
           .then(data => {
            
@@ -42,13 +42,18 @@ const Category = () => {
         navigate('/problemlist',{state:ind});
 
      }
-     const editcategory=(item)=>{
-      navigate('/editcategory',{state:item});
-      console.log("this is edit category");
+     const editcategory=(id)=>{
+     
+      const x=category.filter((item,index)=>{
+        return item.id===id
+      })
+      
+      navigate('/editcategory',{state:x});
+      
      }
      const deletecategory=async(item)=>{
       try {
-        const response = await fetch(`http://127.0.0.1:8000/api/v1/user/getcategory/${item}/`, {
+        const response = await fetch(`https://pawan2221.pythonanywhere.com/api/v1/user/getcategory/${item}/`, {
             method: "DELETE",
         });
         
@@ -64,7 +69,7 @@ const Category = () => {
         // Handle error
     }
 
-    fetch(`http://127.0.0.1:8000/api/v1/user/getcategory/${x}/`) // Replace 'API_ENDPOINT' with your actual API URL
+    fetch(`https://pawan2221.pythonanywhere.com/api/v1/user/getcategory/${x}/`) // Replace 'API_ENDPOINT' with your actual API URL
           .then(response => response.json())
           .then(data => {
            
@@ -95,10 +100,11 @@ const Category = () => {
         </div>
                 
                 
-                <img src={ClearIcon} className='category-emptyimg'onClick={()=>imageClicked(item.id)}alt=''/>
-
+                <img src={`https://pawan2221.pythonanywhere.com/${item.image}`}className='category-emptyimg'onClick={()=>imageClicked(item.id)}alt=''/>
                 <div className='category-image-name'>{item.name}</div>
+                
                 </div>
+                
                 
             </>
             

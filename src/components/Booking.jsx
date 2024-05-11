@@ -18,7 +18,7 @@ const Booking = () => {
         const savecategorybtn = async (e) => {
         
             const x = localStorage.getItem("id");
-            const response=await fetch(`http://127.0.0.1:8000/api/v1/user/getbooking/${x}/`,{
+            const response=await fetch(`https://pawan2221.pythonanywhere.com/api/v1/user/getbooking/${x}/`,{
                 method:'get',
         
             })
@@ -43,10 +43,11 @@ const Booking = () => {
     
     const showbooking=async(booked_problem,id)=>{
         console.log("this is booking",booked_problem);
-        const response=await fetch(`https://pawan12.pythonanywhere.com/api/v1/user/showproblem/`,{
+        const response=await fetch(`https://pawan2221.pythonanywhere.com/api/v1/user/showproblem/`,{
             method:'get',
     
         })
+        
         if(response.ok)
             {
                 const responseData = await response.json(); // Parse response JSON
@@ -96,7 +97,8 @@ const Booking = () => {
                     <div className='col-md-12 list  '>
                         <div className='row'>
                         <div className='col-md-1 booking-image image'>
-                            <img src={item.image}alt="image"/>
+                        {/* src={`http://127.0.0.1:8000${item.image}`} */}
+                            <img className='booking-im' src={`https://pawan2221.pythonanywhere.com/${item.image}`}alt="image"/>
                             </div>  
                         <div className='col-md-3 details'>
                             <div>Location:{item.location}</div>
@@ -116,7 +118,7 @@ const Booking = () => {
                                 </div> 
 
                             <div className='col-md-3 receptionname'>
-                                <div>Receptionname:9823576196</div>
+                                <div>AssistantName:pawan</div>
                                 </div>
                             
                             <div className='col-md-2 showpage'>

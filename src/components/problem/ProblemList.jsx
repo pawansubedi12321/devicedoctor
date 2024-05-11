@@ -16,7 +16,7 @@ const ProblemList = () => {
 }
 useEffect(()=>{
   const problemlist=async()=>{
-    const response=await fetch(`http://127.0.0.1:8000/api/v1/user/getproblem/${state}/`,{
+    const response=await fetch(`http://pawan2221.pythonanywhere.com/api/v1/user/getproblem/${state}/`,{
     method:'get',
 })
 if(response.ok)
@@ -45,6 +45,47 @@ const createbooking=(item)=>{
   navigate('/createbooking',{state:item});
   console.log("this is problemlist",category);
 }
+const editproblem=(id)=>{
+  const x=category.filter((item,index)=>{
+    return item.id===id
+  })
+  console.log("this is cateogy from proble list",x);
+  navigate('/editproblem',{state:x});
+}
+const deleteproblem=async(item)=>{
+  try {
+    const response = await fetch(`http://pawan2221.pythonanywhere.com/api/v1/user/getproblem/${item}/`, {
+        method: "DELETE",
+    });
+    
+    if (!response.ok) {
+        throw new Error("Delete failed"); // Handle error response
+    }
+    
+    console.log("Category deleted successfully");
+    
+    // Redirect user or perform further actions
+} catch (error) {
+    console.error("Error:", error);
+    // Handle error
+}
+
+
+  const response=await fetch(`http://pawan2221.pythonanywhere.com/api/v1/user/getproblem/${state}/`,{
+  method:'get',
+})
+if(response.ok)
+{
+  const responseData = await response.json(); // Parse response JSON
+  setcategory(responseData);
+  setuser(responseData);
+  console.log("this is category",category);
+  // console.log("thiis is setuser from problemlist",user);
+
+
+
+
+  }}
 
   return (
     <div>
@@ -61,7 +102,7 @@ const createbooking=(item)=>{
           <div className='col-md-12 list'>
             <div className='row problem-list'>
             <div className='col-md-1 image'>
-              <img src={item.image}alt='image'/>
+              <img className='problemlist-img' src={`https://pawan2221.pythonanywhere.com/${item.image}`}alt='image'/>
             </div>
 
             <div className='col-md-5 description'>
@@ -76,10 +117,10 @@ const createbooking=(item)=>{
                 <div className='price'>Price:{item.price}</div>
                 </div>
                 <div className='col-md-1 editanddelete'>
-                <div className='edit'>
+                <div className='edit'onClick={()=>editproblem(item.id)}>
                 <ModeEditIcon/>
                 </div>
-                <div className='delete'>
+                <div className='delete'onClick={()=>deleteproblem(item.id)}>
                   <CloseIcon/>
                   </div>
               
@@ -87,7 +128,6 @@ const createbooking=(item)=>{
 
                 <div className='col-md-3 createbooking'>
                   <button className='createbookingbtn'onClick={()=>createbooking(item.id)}>Createbooking</button>
-                  
                   </div>
             </div>
 
@@ -97,8 +137,7 @@ const createbooking=(item)=>{
 
           ))
         }
-        
-        {/* <div className='list'></div> */}
+
       </div>
     </div>
   )

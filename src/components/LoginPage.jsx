@@ -29,7 +29,7 @@ const loginpage = () => {
         phone_number: password,
       };
 
-      const response = await fetch("http://127.0.0.1:8000/api/v1/user/login/", {
+      const response = await fetch("https://pawan2221.pythonanywhere.com/api/v1/user/login/", {
         method: "POST",
         body: JSON.stringify(datavalue),
         headers: {
@@ -53,6 +53,7 @@ const loginpage = () => {
         navigate("/dashboard", { state: responseData });
       } else {
         console.error("Request failed with status:", response.status);
+        alert("password incorrect");
       }
     } catch (error) {
       console.error("Error:", error);

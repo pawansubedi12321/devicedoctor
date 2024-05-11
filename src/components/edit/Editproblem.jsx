@@ -1,17 +1,15 @@
-import React ,{useState} from 'react';
-import './Addproblem.css';
-import Image from './assets/img.png';
-import { useScrollTrigger } from '@mui/material';
+import React,{useState} from 'react'
 import {useLocation,useNavigate} from 'react-router-dom'
-const Addproblem = () => {
-  const navigate=useNavigate();
+import Image from './assets/img.png';
+const Editproblem = () => {
+
     const[name,setname]=useState("");
     const[description,setdescription]=useState("");
     const[intervalvalue,setintervalvalue]=useState("");
     const[Estimatedamnt,setEstimatedamnt]=useState("");
     const[image,setimage]=useState("");
     const[addproblemimage,setaddproblemimage]=useState('');
-    const[show,setshow]=useState(false);
+    const[show,setshow]=useState(true);
     const { state } = useLocation();
 
     console.log("this is state");
@@ -35,14 +33,14 @@ const Addproblem = () => {
         console.log(x);
 
     }
-    // const estmamount=(e)=>{
-    //   const x=e.target.value;
-    //   setEstimatedamnt(x);
-    // }
+    const estmamount=(e)=>{
+      const x=e.target.value;
+      setEstimatedamnt(x);
+    }
     const imagefile=(e)=>{
       const x=e.target.files[0];
       console.log(x);
-      setshow(true);
+    //   setshow(true);
       setimage(x);
       if (x) {
         const y = URL.createObjectURL(x);
@@ -54,38 +52,50 @@ const Addproblem = () => {
       }
 
     }
+    
     const savebtn=async()=>{
         // e.preventDefault();
-        const formData = new FormData();
-        formData.append("name", name);
+        // const formData = new FormData();
+        // formData.append("name", name);
         // formData.append("price", Estimatedamnt);
-        formData.append("est_time", intervalvalue);
-        formData.append("short_description",description);
-        formData.append("image",image);
-        formData.append('category',state);
-    try {
-      const response = await fetch("https://pawan2221.pythonanywhere.com/api/v1/user/addproblem/", {
-        method: "POST",
-        body:formData,
-      });
-      // Check if the request was successful (status code 200-299)
-      if (response.ok) {
-        const responseData = await response.json(); // Parse response JSON
-        
-        console.log(responseData);
-        alert("added successfully");
-        // navigate('/problemlist');
-      } else {
-        console.error("Request failed with status:", response.status);
-      }
-    } catch (error) {
-      console.error("Error:", error);
+        // formData.append("est_time", intervalvalue);
+        // formData.append("short_description",description);
+        const formData={
+            name:name,
+            
+            est_time:intervalvalue,
+            short_description:description,
+        }
+        try {
+            
+            const response = await fetch(`http://pawan2221.pythonanywhere.com/api/v1/user/getproblem/${state[0].id}/`, {
+                method: "PUT",
+                body: JSON.stringify(formData), // Assuming datavalue contains login data
+                headers: {
+                    "Content-Type": "application/json",
+                },
+            });
+            
+            if (!response.ok) {
+                throw new Error("Login failed"); // Handle error response
+            }
+            
+            // Assuming the response contains some data after successful login
+            const responseData = await response.json();
+            
+            // Handle the response data as needed
+            console.log(responseData);
+            
+            // Redirect user or perform further actions
+        } catch (error) {
+            console.error("Error:", error);
+            // Handle error
+        }
     }
-    }
+
   return (
     <div>
-        
-      <div className="addpage">
+        <div className="addpage">
       <div className="addcategory">
         
       <div className="add-question-body">
@@ -100,6 +110,7 @@ const Addproblem = () => {
                         onChange={problemname}
                         placeholder="Typehere..."
                         rows="3"
+                        defaultValue={state[0].name}
                       />
                       <label className={`name-333`}>Name</label>
                     </div>
@@ -115,6 +126,7 @@ const Addproblem = () => {
                           class="col-md-12 shortdescription"
                           id="exampleFormControlTextarea1"
                           rows="3"
+                          defaultValue={state[0].short_description}
                         ></textarea>
                         <div className="count">0/200</div>
                       </div>
@@ -130,6 +142,7 @@ const Addproblem = () => {
                             onChange={Timeintervalvalue}
                            
                             className="text-32"
+                            defaultValue={state[0].est_time}
                           />
                           <span className="hrs">hrs</span>
                         </div>
@@ -142,6 +155,7 @@ const Addproblem = () => {
                             type="text"
                             placeholder="00.000"
                             onChange={estmamount}
+                            defaultValue={state[0].price}
                            
                             className="interval-text"
                           />
@@ -154,8 +168,9 @@ const Addproblem = () => {
                     <div className="add-image-xxd">
                       <img src={Image}className='addimage'/>
                       <input type="file"required className={`problemfile `}onChange={imagefile} accept="image/*"/>
-                      { show ?<img className="addproblemimage"src={addproblemimage}alt="addproblemimage"/>:""
-                      }
+                      {/* src={`http://127.0.0.1:8000${state[0].image}`} */}
+                      <img className="addproblemimage"src={`https://pawan2221.pythonanywhere.com/${state[0].image}`}alt="addproblemimage"/>:""
+                      
                       
                     </div>
                     <div className="save-33">
@@ -169,8 +184,8 @@ const Addproblem = () => {
         </div>
 
       </div>
-      </div>
+    </div>
   )
 }
 
-export default Addproblem
+export default Editproblem

@@ -27,14 +27,14 @@ const Navbar = () => {
       <div class="offcanvas-body">
         <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" onClick={category}>Category</a>
+            <a class="nav-link active nav" aria-current="page" onClick={category}>Category</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" onClick={dashboard}>Dashboard</a>
+            <a class="nav-link nav" onClick={dashboard}>Dashboard</a>
           </li>
 
           <li class="nav-item">
-            <a class="nav-link" onClick={booking}>Booking</a>
+            <a class="nav-link nav" onClick={booking}>Booking</a>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">

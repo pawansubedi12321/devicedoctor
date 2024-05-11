@@ -15,10 +15,10 @@
 }
 .booking-image{
     height:100px;
-    /* background-color: green; */
+   
 }
 .details{
-    /* background-color: red; */
+    
     height:100px;
     color:#FFF;
     display:flex;
@@ -95,4 +95,9 @@
 }
 .categorytext::placeholder{
     font-size: 15px;
+}
+.booking-im{
+    width:100px;
+    height:100px;
+    object-fit: cover;
 }

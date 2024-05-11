@@ -10,6 +10,8 @@
     height:50px;
     border-radius: 10px;
     width:30vw;
+    color:#FFF;
+    padding-left:30px;
 }
 .category-image{
     display:flex;
@@ -39,6 +41,7 @@
     position:absolute;
     z-index: 2;
     border-radius: 10px;
+    object-fit: cover;
 }
 .form-control::placeholder {
     margin-left: 500px; /* Adjust the margin as needed */

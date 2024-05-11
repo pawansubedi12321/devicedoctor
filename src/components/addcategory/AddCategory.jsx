@@ -44,7 +44,7 @@ const AddCategory = () => {
 
     try {
       const response = await fetch(
-        "http://127.0.0.1:8000/api/v1/user/addcategory/",
+        "https://pawan2221.pythonanywhere.com/api/v1/user/addcategory/",
         {
           method: "POST",
           body: formData,
@@ -90,7 +90,7 @@ const AddCategory = () => {
                 onChange={categorytext}
                 type="text"
                 class="categorytext"
-                placeholder="             Enter a category name"
+                placeholder="Enter a category name"
               />
             </div>
 

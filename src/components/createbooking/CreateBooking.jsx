@@ -15,6 +15,9 @@ const createbooking = () => {
   const[userdescription,setuserdescription]=useState("");
   const[userid,setuserid]=useState("");
   const[image,setimage]=useState("");
+  const[clickedimage,setclickedimage]=useState('');
+  const[backgroundimage,setbackgroundimage]=useState('');
+  const[phone,setphone]=useState('');
   const {state}=useLocation();
   console.log("this is state",state);
  
@@ -65,7 +68,25 @@ const createbooking = () => {
   const file=(e)=>{
     const x=e.target.files[0];
     setimage(x);
+
+    
+    // setimg(x);
+    if (x) {
+      const y = URL.createObjectURL(x);
+      console.log("dfs");
+      console.log(y);
+      console.log("ned");
+
+      setclickedimage([...clickedimage, y]);
+      setbackgroundimage(!backgroundimage);
+    }
     // console.log("this is file",x);
+
+  }
+  const phonenumber=(e)=>{
+    const x=e.target.value;
+    console.log(x);
+    setphone(x);
 
   }
   const savebtn=async(e)=>{
@@ -80,7 +101,8 @@ const createbooking = () => {
       description:userdescription,
       booked_problem:state,
       user:userid,
-      image:image
+      image:image,
+      phone_number:phone,
     }
     for (const key in data) {
       console.log("this is key",key);
@@ -91,7 +113,7 @@ const createbooking = () => {
   
   try {
     const response = await fetch(
-      "http://127.0.0.1:8000/api/v1/user/createbooking/",
+      "https://pawan2221.pythonanywhere.com/api/v1/user/createbooking/",
       {
         method: "POST",
         body: formData,
@@ -102,6 +124,7 @@ const createbooking = () => {
     if (response.ok) {
       const responseData = await response.json(); // Parse response JSON
       console.log("create booking response",responseData);
+      alert("booked succesfully");
       // navigate("/category");
 
       //   // Log the response data
@@ -112,6 +135,8 @@ const createbooking = () => {
   } catch (error) {
     console.error("Error:", error);
   }
+
+  
 
 
   }
@@ -153,6 +178,11 @@ const createbooking = () => {
               <div className='col-md-4 create-booking-image'>
                 <input type='file'onChange={file} className='create-booking-file'/>
                 <img src={Image}alt='image'className='create-booking-img'/>
+                {backgroundimage ? (
+                <img src={clickedimage} className="show-booking-image" />
+              ) : (
+                ""
+              )}
 
 </div>
 
@@ -182,7 +212,12 @@ const createbooking = () => {
 
               <div className='col-md-7 brandtext gx-lg-5'>
                 <div className='selected_brand'>description</div>
-                <input onChange={description} type="text"className='brand'placeholder='2 weeksk'/>
+                <input onChange={description} type="text"className='brand'placeholder='description'/>
+
+              </div>
+              <div className='col-md-7 brandtext gx-lg-5'>
+                <div className='selected_brand'>Phone_number</div>
+                <input onChange={phonenumber} type="text"className='brand'placeholder='phone_number'/>
 
               </div>
 

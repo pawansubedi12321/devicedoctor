@@ -10,9 +10,12 @@ const EditCategory = () => {
   const [backgroundimage, setbackgroundimage] = useState(false);
   const [categorytextstate, setcategorytextstate] = useState("");
   const [imagewithouturl, setimagewithouturl] = useState("");
+  const[category,setcategory]=useState([]);
+  const[editname,seteditname]=useState([]);
   const navigate = useNavigate();
+  console.log('this is state',state);
 
-  console.log("this is state",state);
+
   const imagefile = (e) => {
     let x = e.target.files[0];
 
@@ -49,7 +52,7 @@ const EditCategory = () => {
         image:imagewithouturl.name
 
       }
-      const response = await fetch(`http://127.0.0.1:8000/api/v1/user/getcategory/${state}/`, {
+      const response = await fetch(`https://pawan2221.pythonanywhere.com/api/v1/user/getcategory/${state[0].id}/`, {
           method: "PUT",
           body: JSON.stringify(datavalue), // Assuming datavalue contains login data
           headers: {
@@ -73,7 +76,13 @@ const EditCategory = () => {
       // Handle error
   }
 
+ 
+ 
+
   }
+  
+  
+  console.log("this is editname",state);
   return (
     <div>
         <div className="addpage">
@@ -86,11 +95,10 @@ const EditCategory = () => {
                 className="add-category-image"
                 alt="category-image"
               />
-              {backgroundimage ? (
-                <img src={clickimage} className="clickimage" />
-              ) : (
-                ""
-              )}
+              {/* {backgroundimage ? ( */}
+                {/* // src={`http://127.0.0.1:8000${item.image}`} */}
+                <img src={`https://pawan2221.pythonanywhere.com/${state[0].image}`} className="clickimage" />
+              
             </div>
             <div className="nameandtext">
               
@@ -99,6 +107,7 @@ const EditCategory = () => {
                 type="text"
                 class="categorytext"
                 placeholder="Enter a category name"
+                defaultValue={state[0].name}
               />
             </div>
 

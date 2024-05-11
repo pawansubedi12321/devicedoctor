@@ -27,9 +27,11 @@ const ShowBooking = () => {
               <th>Selected_brand</th>
               <th>Status</th>
               <th>time_period</th>
+              <th>Phone_number</th>
             </tr>
             <tr>
-                <td>{item.image}</td>
+            {/* {`http://127.0.0.1:8000${item.image}`} */}
+                <td><img className='showbooking-img' src={`https://pawan2221.pythonanywhere.com/${item.image}`}/></td>
                 <td>{item.booked_date}</td>
                 <td>{item.description}</td>
                 
@@ -39,6 +41,7 @@ const ShowBooking = () => {
                 <td>{item.selected_brand}</td>
                 <td>{item.status}</td>
                 <td>{item.time_period}</td>
+                <td>{item.phone_number}</td>
                 
             </tr>
             
@@ -64,11 +67,11 @@ const ShowBooking = () => {
                         
                     </tr>
                     <tr>
-                        <th>{item.image}</th>
-                        <th>{item.name}</th>
-                        <th>{item.price}</th>
-                        <th>{item.short_description}</th>
-                        <th>{item.est_time}</th>
+                        <td><img className="problemlist-img"src={`https://pawan2221.pythonanywhere.com/${item.image}`}/></td>
+                        <td>{item.name}</td>
+                        <td>{item.price}</td>
+                        <td>{item.short_description}</td>
+                        <td>{item.est_time}</td>
                     </tr>
                 </table>
             ))
