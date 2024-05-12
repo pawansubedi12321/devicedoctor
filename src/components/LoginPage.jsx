@@ -6,7 +6,7 @@ import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
 // import {token,Login} from './api/API.jsx';
 const loginpage = () => {
-  const [phone, setphone] = useState("");
+  const [username, setusername] = useState("");
   const [password, setpassword] = useState("");
   const [show, setshow] = useState(false);
 
@@ -14,7 +14,7 @@ const loginpage = () => {
   const user = (e) => {
     const x = e.target.value;
 
-    setphone(x);
+    setusername(x);
   };
   const pass = (e) => {
     const x = e.target.value;
@@ -22,14 +22,19 @@ const loginpage = () => {
   };
   const login = async (e) => {
     e.preventDefault();
-
     try {
       const datavalue = {
-        username: phone,
-        phone_number: password,
+        username: username,
+        phone_number: password
       };
+      // const formData = new FormData();
+      // formData.append('phone', phone);
+      // formData.append('password', password);
+  
+      // // Convert FormData to a plain object
+      // const formDataObject = {};
 
-      const response = await fetch("https://pawan2221.pythonanywhere.com/api/v1/user/login/", {
+      const response = await fetch('http://127.0.0.1:8000/api/v1/user/login/', {
         method: "POST",
         body: JSON.stringify(datavalue),
         headers: {

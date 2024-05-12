@@ -13,28 +13,38 @@ const Category = () => {
 
     }
     const x = localStorage.getItem("id");
-    useEffect(() => {
-        // Fetch image data from API
-        fetch(`https://pawan2221.pythonanywhere.com/api/v1/user/getcategory/${x}/`) // Replace 'API_ENDPOINT' with your actual API URL
-          .then(response => response.json())
-          .then(data => {
-           
-            setcategory(data);
-          })
-          .catch(error => {
-            console.error('Error fetching image data:', error);
-          });
-      }, []); // Empty dependency array ensures useEffect runs only once on component mount
-         
-      
-      
-      // if(category.message==='Category not found')
-      // {
-      //   console.log("not found");
-      // }
-      // else{
-      //   console.log("found");
-      // }
+   const accessToken = localStorage.getItem("accesstoken");
+
+useEffect(() => {
+    const fetchData = async () => {
+        try {
+            const response = await fetch('http://127.0.0.1:8000/api/v1/user/getcategory/', {
+                method: "get",
+                // body: JSON.stringify(datavalue),
+                headers: {
+                    "Content-Type": "application/json",
+                    // Include the access token in the Authorization header
+                    "Authorization": `Bearer ${accessToken}`
+                },
+            });
+
+            if (response.ok) {
+                const responseData = await response.json();
+                console.log("this is responsedata",responseData);
+                setcategory(responseData); // Assuming setCategory is a state setter function
+            } else {
+                console.error("Request failed with status:", response.status);
+            }
+        } catch (error) {
+            console.error("Error:", error);
+        }
+    };
+
+    fetchData(); // Call the fetchData function
+
+}, [accessToken]);
+  
+ 
       console.log("this is category",category);
 
      const imageClicked=(ind)=>{
@@ -92,15 +102,16 @@ const Category = () => {
             <>
            
                 <div className='categoryimage'>
-                <div className='edit edit-category'onClick={()=>editcategory(item.id)}>
+                {/* <div className='edit edit-category'onClick={()=>editcategory(item.id)}>
             <ModeEditIcon/>
-                </div>
-        <div className='delete delete-category'onClick={()=>deletecategory(item.id)}>
+                </div> */}
+        {/* <div className='delete delete-category'onClick={()=>deletecategory(item.id)}>
           <ClearIcon/>
-        </div>
+        </div> */}
                 
                 
-                <img src={`https://pawan2221.pythonanywhere.com/${item.image}`}className='category-emptyimg'onClick={()=>imageClicked(item.id)}alt=''/>
+                {/* <img src={`https://pawan2221.pythonanywhere.com/${item.image}`}className='category-emptyimg'onClick={()=>imageClicked(item.id)}alt=''/> */}
+                <img src={`${item.image}`}className='category-emptyimg'onClick={()=>imageClicked(item.id)}alt=''/>
                 <div className='category-image-name'>{item.name}</div>
                 
                 </div>
