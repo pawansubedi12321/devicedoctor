@@ -10,6 +10,15 @@
 .offcanvas-body{
     background-color:#371a45;
 }
+.dash-img-3e{
+    display:flex;
+    /* justify-content: center; */
+}
+.welcome-image{
+    /* width:400px; */
+    width:100%;
+    height:100vh
+}
 /* .nav{
     color:#FFF !important;
 } */

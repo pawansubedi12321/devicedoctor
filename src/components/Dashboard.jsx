@@ -54,10 +54,18 @@ const Dashboard =() => {
     <div>
        
        
-       <div className='dashboardpage'>
-       <Navbar/>
-       
-       <img src='https://tenor.com/view/welcome-sparkly-gif-20796011'/>
+       <div className='row dashboardpage'>
+        <div className='col-md-3'>
+        <Navbar/>
+
+        </div>
+        <div className='col-md-9 dash-img-3e'>
+                 
+       <img className='welcome-image' src='https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExeXE0NXhpYW55YzRjZm1jbnczMWs2dTlpbmY1djQ0cGt6eDV0cXBmNiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9dHM/4N3Mqhl8JRyYLapZgt/giphy.gif'/>
+
+        </div>
+      
+
 
        </div>
 
