@@ -64,17 +64,17 @@ const ShowBooking = () => {
                     <tr>
                         <th>image</th>
                         <th>name</th>
-                        {/* <th>price</th> */}
+                        <th>price</th>
                         <th>short_description</th>
-                        <th>Est_time</th>
+                        {/* <th>Est_time</th> */}
                         
                     </tr>
                     <tr>
                         <td><img className="problemlist-img"src={`http://127.0.0.1:8000/${item.image}`}/></td>
                         <td>{item.name}</td>
-                        {/* <td>{item.price}</td> */}
+                        <td>{item.price}</td>
                         <td>{item.short_description}</td>
-                        <td>{item.est_time}</td>
+                        {/* <td>{item.est_time}</td> */}
                     </tr>
                 </table>
             ))

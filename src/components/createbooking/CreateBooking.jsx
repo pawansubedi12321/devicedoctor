@@ -160,7 +160,14 @@ const createbooking = () => {
         <h1 className=''>price:{state[0].price}</h1>
         <h1 className=''>est_time:{state[0].est_time}</h1>
         <h1 className=''>ShortDescription:{state[0].short_description}</h1>
-        </div> 
+        </div>
+        
+        
+        
+
+     
+ 
+
      </div>
      </div>
      </div>

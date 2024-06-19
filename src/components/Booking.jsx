@@ -222,13 +222,14 @@ const Booking = () => {
             console.error("Request failed with status:", response.status);
         }
     }
-    const [brand, setbrand]=useState("")
+    const [brand, setbrand]=useState()
 const[booked,setbooked]=useState("");
 const[phone,setphone]=useState('');
 const[userdescription,setuserdescription]=useState("");
 const[userlocation,setuserlocation]=useState("");
     const selectedbrand=(e)=>{
         const x=e.target.value;
+        console.log("this is brand",x);
         setbrand(x);
         
       
@@ -302,7 +303,20 @@ const[userlocation,setuserlocation]=useState("");
         const x=e.target.value;
         setuserlocation(x);
       }
-  
+      useEffect(() => {
+        if (editdata && editdata[0] && editdata[0].selected_brand) {
+            setbrand(editdata[0].selected_brand);
+        }
+        if(editdata && editdata[0]&&editdata[0].booked_date){
+            setbooked(editdata[0].booked_date)
+        }
+        if(editdata&& editdata[0]&&editdata[0].location)
+            {
+                setuserlocation(editdata[0].location)
+            }
+
+      }, [editdata]);
+      console.log("this is brand",brand);
     const Edit = async () => {
         console.log("this is brand", brand);
         console.log("ths is date", booked);
@@ -348,6 +362,7 @@ const[userlocation,setuserlocation]=useState("");
             alert("An error occurred while making the request");
         }
     };
+   
     const[showproblem,setshowproblem]=useState();
     const show=async(bookingid)=>{
         console.log("this is id",bookingid);
@@ -456,11 +471,9 @@ const[userlocation,setuserlocation]=useState("");
                                                                 <div className='problem-description'>
                                                                     <p>{problem==undefined?"":problem[0].short_description}</p>
                                                                 </div>
-                                                                <div className='booking-time'>
-                                                                    <span className='esttime'>EstTime</span>:{problem===undefined?"":problem[0].est_time}hrs
-                                                                </div>
+                                                                
                                                                 <div className=''>
-                                                                    {problem===undefined?"":problem[0].price}Rs
+                                                                  Time:  {problem===undefined?"":problem[0].price}Rs
                                                                 </div>
                                                                 
 

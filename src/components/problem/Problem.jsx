@@ -198,13 +198,12 @@ const book=async()=>{
           <div className='col-md-3'> 
           <Navbar/>
           </div>
-
-
+          <div className='col-md-9 cate'>
           {
         category.message==='Category not found'?"":category.map((item,index)=>(
             <>
            
-                <div className='categoryimage'>
+                <div className=' categoryimage'>
                 <img src={`http://127.0.0.1:8000/${item.image}`}className='category-emptyimg'onClick={()=>imageClicked(item.id)}alt=''/>
                 <div className='category-image-name'>{item.name}</div>
                 <button className='booknow'data-bs-toggle="modal" data-bs-target="#bookingexampleModal" onClick={()=>createbooking(item.id)}>Book Now</button>
@@ -215,6 +214,7 @@ const book=async()=>{
             
             ))
         }
+        </div>
 
 <div class="modal fade" id={"bookingexampleModal"} tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-xl modal-dialog" >
@@ -240,22 +240,13 @@ const book=async()=>{
                 <div className='problem-description'>
                   <p>{problemlist===undefined?"":problemlist[0].short_description}</p>
                 </div>
-                <div className='booking-time'>
+                {/* <div className='booking-time'>
                   <span className='esttime'>EstTime</span>:{problemlist===undefined?"":problemlist[0].est_time}hrs
-                </div>
+                </div> */}
                 <div className=''>
-                  {problemlist===undefined?"":problemlist[0].price}Rs
+                  Price:{problemlist===undefined?"":problemlist[0].price}Rs
                 </div>
-                <div className='quantitylist'>
-                  <label className='quantity'>Quantity:</label>&nbsp;
-                  {/* <div className='add' onClick={() => dispatch({ type: 'increment' })}>
-                    <AddIcon className='addicon' />
-                  </div> */}
-                  {/* <span className='quantity'>&nbsp;{quantity.count}&nbsp;</span> */}
-                  {/* <div className='subtract' onClick={() => dispatch({ type: 'decrement' })}>
-                    <RemoveIcon className='subtracticon' />
-                  </div> */}
-                </div>
+                
 
 
                 <label>
