@@ -401,9 +401,9 @@ const[userlocation,setuserlocation]=useState("");
                         booking.map((item, index) => (
                             <div className='col-md-12 list  '>
                                 <div className='row'>
-                                    <div className='col-md-1 booking-image image'>
+                                    {/* <div className='col-md-1 booking-image image'>
                                         <img className='booking-im' src={`http://127.0.0.1:8000/${item.image}`} alt="image" />
-                                    </div>
+                                    </div> */}
                                     <div className='col-md-3 details'>
                                         <div>Location:{item.location}</div>
                                         <div>Problem_interval:{item.problem_interval}</div>

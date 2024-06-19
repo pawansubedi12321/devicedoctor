@@ -58,6 +58,28 @@ const ShowBooking = () => {
             Problem List
         </h1>
 
+        {
+            state.showproblem.map((item)=>(
+                <table>
+                    <tr>
+                        <th>image</th>
+                        <th>name</th>
+                        {/* <th>price</th> */}
+                        <th>short_description</th>
+                        <th>Est_time</th>
+                        
+                    </tr>
+                    <tr>
+                        <td><img className="problemlist-img"src={`http://127.0.0.1:8000/${item.image}`}/></td>
+                        <td>{item.name}</td>
+                        {/* <td>{item.price}</td> */}
+                        <td>{item.short_description}</td>
+                        <td>{item.est_time}</td>
+                    </tr>
+                </table>
+            ))
+        }
+
           </div>
 
     </div>
@@ -107,27 +129,7 @@ const ShowBooking = () => {
         <h1>
             Problem List
         </h1>
-        {
-            state.bookedproblem.map((item)=>(
-                <table>
-                    <tr>
-                        <th>image</th>
-                        <th>name</th>
-                        <th>price</th>
-                        <th>short_description</th>
-                        <th>Est_time</th>
-                        
-                    </tr>
-                    <tr>
-                        <td><img className="problemlist-img"src={`https://pawan2221.pythonanywhere.com/${item.image}`}/></td>
-                        <td>{item.name}</td>
-                        <td>{item.price}</td>
-                        <td>{item.short_description}</td>
-                        <td>{item.est_time}</td>
-                    </tr>
-                </table>
-            ))
-        }
+        
       </div> */}
     </>
   )

@@ -8,6 +8,7 @@ const Problem = () => {
     const { state } = useLocation();
   const[category,setcategory]=useState([]);
   const navigate=useNavigate()
+  console.log("this is state",state);
   
 
 
