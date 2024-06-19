@@ -14,7 +14,7 @@ const ShowBooking = () => {
     <div className='col-md-3'> 
           <Navbar/>
           </div>
-          <div className='col-md-9'>
+          <div className='book-44 col-md-9'>
           <h1>Booking List</h1>
           {
             state.showbooking.map((item,index)=>(
