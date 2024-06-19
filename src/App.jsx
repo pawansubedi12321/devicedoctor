@@ -1,23 +1,23 @@
-import { useState ,createContext, useContext } from 'react'
+// import { useState ,createContext, useContext } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 import Loginpage from './components/LoginPage'
 import PublicRoutes from './router/PublicRoutes'
 
-export const UserContext = createContext();
+
 function App() {
-  const [user, setuser] = useState([]);
-  console.log("thiis is setuser from app",user);
+  // const [user, setuser] = useState([]);
+  // console.log("thiis is setuser from app",user);
 
   return (
     <>
       
         {/* <Loginpage/> */}
 
-        <UserContext.Provider value={{ user, setuser }}>
+        {/* <UserContext.Provider> */}
         <PublicRoutes/>
-        </UserContext.Provider>
+        {/* </UserContext.Provider> */}
        
     </>
   )

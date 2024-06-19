@@ -67,6 +67,7 @@ const createbooking = () => {
   }
   const file=(e)=>{
     const x=e.target.files[0];
+    console.log("this is x",x);
     setimage(x);
 
     
@@ -76,12 +77,9 @@ const createbooking = () => {
       console.log("dfs");
       console.log(y);
       console.log("ned");
-
       setclickedimage([...clickedimage, y]);
       setbackgroundimage(!backgroundimage);
     }
-    // console.log("this is file",x);
-
   }
   const phonenumber=(e)=>{
     const x=e.target.value;
@@ -89,6 +87,7 @@ const createbooking = () => {
     setphone(x);
 
   }
+  const accessToken = localStorage.getItem("accesstoken");
   const savebtn=async(e)=>{
     const formData = new FormData()
     const data={
@@ -100,7 +99,7 @@ const createbooking = () => {
       problem_interval:problem,
       description:userdescription,
       booked_problem:state,
-      user:userid,
+      // user:userid,
       image:image,
       phone_number:phone,
     }
@@ -113,10 +112,15 @@ const createbooking = () => {
   
   try {
     const response = await fetch(
-      "https://pawan2221.pythonanywhere.com/api/v1/user/createbooking/",
+      "http://127.0.0.1:8000/api/v1/user/createbooking/",
       {
         method: "POST",
         body: formData,
+        headers: {
+          // "Content-Type": "application/json",
+          // Include the access token in the Authorization header
+          "Authorization": `Bearer ${accessToken}`
+      },
       }
     );
 
@@ -135,15 +139,32 @@ const createbooking = () => {
   } catch (error) {
     console.error("Error:", error);
   }
-
-  
-
-
   }
  
   return (
     <>
-    <Navbar/>
+     <div className=' categorypage'>
+      <div className='row'>
+      <div className='col-md-3'>
+      <Navbar/>
+
+      </div>
+     <div className='col-md-9 problemlist'>
+         {/* <h1>Problem Details</h1> */}
+          
+          <img  className='problemimage'src={`http://127.0.0.1:8000/${state[0].image}`}/>
+        <div className='problemdetails'>
+          <h1>Problem Details</h1>
+        <h1 className=''>Problem Name:{state[0].name}</h1>
+        
+        <h1 className=''>price:{state[0].price}</h1>
+        <h1 className=''>est_time:{state[0].est_time}</h1>
+        <h1 className=''>ShortDescription:{state[0].short_description}</h1>
+        </div> 
+     </div>
+     </div>
+     </div>
+    {/* <Navbar/>
     <div className='container-fluid container-xxs'>
         <div className='createbookingpage'>
           <div className='row'>
@@ -228,34 +249,8 @@ const createbooking = () => {
             
               
             </div>
-
-          
-         
-
-
-              {/* <div className='col-md-4 createbookingimg'>
-
-</div> */}
-              
-              
-
-
-              
-
-            
-
-              
-
-
-             
-
-           
-
-          
-
-     
         </div>
-    </div>
+    </div> */}
     </>
   )
 }

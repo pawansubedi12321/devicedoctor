@@ -12,15 +12,21 @@
     /* height:93vh; */
     /* background-color: red; */
     overflow-y: scroll;
+
+    height:100vh;
 }
 .booking-image{
     height:100px;
    
 }
+.modal-backdrop.show{
+    opacity:0;
+    display: none;
+}
 .details{
     
     height:100px;
-    color:#FFF;
+    /* color:#FFF; */
     display:flex;
     flex-direction: column;
     justify-content: center;

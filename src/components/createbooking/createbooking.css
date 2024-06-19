@@ -62,6 +62,9 @@
     padding-top:10px;
     position:relative;
 }
+.date{
+    margin-left:50px;
+}
 .selected_brand{
     position:absolute;
     display:flex;
@@ -72,9 +75,9 @@
 .brand{
     height:60px;
     border-radius: 10px;
-    background-color: #a803f5;
-    padding-left:160px;
-    color:#FFF;
+   
+    padding-left:10px;
+    /* color:#FFF; */
 
     
 }
@@ -114,4 +117,18 @@
     border-radius: 10px;
     position:absolute;
     object-fit: cover;
+}
+.problemlist{
+    /* width:100vw; */
+    /* height:50vh; */
+    background-color: #fff;
+    display:flex;
+    /* justify-content: center; */
+}
+.problemimage{
+    width:600px;
+}
+.brand{
+    margin-left:50px;
+    width:90%;
 }

@@ -3,12 +3,13 @@
     width:60px;
 }
 .dashboardpage{
-    background-color: #2F0443;
-    height:93vh;
+    background-color: #f0e9f3;
+    height:100vh;
 }
+
 .offcanvas-body{
     background-color:#371a45;
 }
-.nav{
+/* .nav{
     color:#FFF !important;
-}
+} */

@@ -19,13 +19,15 @@ import Loginpage from "../components/LoginPage"
 import Dashboard from "../components/Dashboard";
 import Category from "../components/Category";
 import AddCategory from "../components/addcategory/AddCategory";
-import ProblemList from "../components/problem/problemlist";
+// import ProblemList from "../components/problem/problemlist";
 import Addproblem from "../components/problem/Addproblem";
 import CreateBooking from "../components/createbooking/CreateBooking";
 import Booking from "../components/Booking";
 import ShowBooking from "../components/createbooking/ShowBooking";
 import EditCategory from "../components/edit/EditCategory";
 import EditProblem from '../components/edit/Editproblem';
+import EditBooking from "../components/EditBooking";
+import Problem from "../components/problem/Problem";
 const PublicRoutes = () => {
     
   return (
@@ -36,25 +38,15 @@ const PublicRoutes = () => {
             <Route path='/dashboard'element={<Dashboard/>}></Route>
             <Route path='/category'element={<Category/>}></Route>
             <Route path='/addcategory'element={<AddCategory/>}></Route>
-            <Route path='/problemlist'element={<ProblemList/>}></Route>
+            {/* <Route path='/problemlist'element={<ProblemList/>}></Route> */}
+            <Route path='/problem'element={<Problem/>}></Route>
             <Route path='/addproblem'element={<Addproblem/>}></Route>
             <Route path='/createbooking'element={<CreateBooking/>}></Route>
             <Route path='/booking'element={<Booking/>}></Route>
             <Route path='/showbooking'element={<ShowBooking/>}></Route>
             <Route path='/editcategory'element={<EditCategory/>}></Route>
             <Route path='/editproblem'element={<EditProblem/>}></Route>
-            {/* <Route path="/"element={<LoginPage/>}></Route>
-            <Route path="/dashboard"element={<Dashboard/>}></Route> 
-            <Route path="/CategoryPage"element={<CategoryPage/>}></Route> 
-            <Route path="/additems"element={<AddItems/>}></Route>
-            <Route path="/addproblem"element={<Addproblem/>}></Route>
-            <Route path="/problemlist"element={<ProblemList/>}></Route>
-            <Route path="/question"element={<QuestionPage/>}></Route>
-            <Route path="/addquestion"element={<AddQuesion/>}></Route>
-            <Route path="/booking"element={<Booking/>}></Route>
-            <Route path='/showpage'element={<ShowPage/>}></Route>
-            <Route path='/edit'element={<Edit/>}></Route>
-            <Route path="/trialpage"element={<Trialpage/>}></Route> */}
+            <Route path='/editbooking'element={<EditBooking/>}></Route>
         </Routes>
         </BrowserRouter>
     </div>

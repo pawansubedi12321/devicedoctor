@@ -53,8 +53,11 @@ const Dashboard =() => {
   return (
     <div>
        
-       <Navbar/>
+       
        <div className='dashboardpage'>
+       <Navbar/>
+       
+       <img src='https://tenor.com/view/welcome-sparkly-gif-20796011'/>
 
        </div>
 

@@ -1,8 +1,9 @@
 .list{
    
     height:100px;
-    background-color:#6b3cfb;
+    background-color:#f5e1e1;
     margin-top:10px;
+    /* width:100vw; */
 }
 .image{
     /* border: 10px solid black; */
@@ -74,4 +75,49 @@
     width:100px;
     height:100px;
     object-fit: cover;
+}
+
+::placeholder{
+    color:rgb(105, 105, 105);
+
+}
+.clicked{
+    background-color:#cedbf6  !important;
+    color:#FFF !important;
+}
+.click{
+    background-color:#999ca4 ;
+}
+.period{
+    width:150px;
+    height:50px;
+    /* background-color:#FFF; */
+    /* box-shadow: 0 2px 12px -2px #00000026; */
+    /* box-shadow:0 2px 12px -2px yellow; */
+    box-shadow:0 2px 12px -2px #00000026;
+    /* margin-bottom:15px; */
+    display:flex;
+    align-items: center;
+    justify-content: center;
+   
+    /* padding:15px; */
+    
+}
+.Time_period{
+    /* display:flex;
+    flex-direction: row;
+    flex-wrap: wrap; */
+    display:grid;
+    grid-template-columns: repeat(auto-fill, minmax(135px, 1fr)); /* Adjust the min and max width as needed */
+    gap:10px;
+    
+  /* gap: 10px; Adjust the gap between grid items as needed */
+    /* display:grid;
+    grid-template-columns: repeat(3,1fr); */
+}
+.margin-left{
+    margin-left:50px;
+}
+.location{
+    margin-top:20px;
 }

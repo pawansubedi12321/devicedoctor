@@ -1,22 +1,36 @@
 import React from 'react'
 import {useNavigate} from 'react-router-dom'
+import '../css/Navbar.css';
 const Navbar = () => {
     const navigate=useNavigate();
     const username = localStorage.getItem('username');
     const category=()=>{
         navigate('/category');
     }
-
     const dashboard=()=>{
         navigate('/dashboard');
     }
-
     const booking=()=>{
       navigate('/booking');
     }
+    const welcomeuser=localStorage.getItem('username');
   return (
-    <div>
-        <nav class="navbar bg-body-tertiary fixed-top">
+    <div className='navbar'>
+      <ul>
+        <li className='user'>{welcomeuser}</li>
+        <li>
+          <div onClick={category} className='nav'>
+          Category
+          </div>
+          </li>
+        <li>
+          <div onClick={dashboard} className='nav'>Dashboard</div></li>
+        <li><div onClick={booking} className='nav'>Booking</div></li>
+
+        <li className='designby'>design by pawan subedi and prashant lama</li>
+
+      </ul>
+        {/* <nav class="navbar bg-body-tertiary fixed-top">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">{username}</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
@@ -54,7 +68,7 @@ const Navbar = () => {
       </div>
     </div>
   </div>
-</nav>
+</nav> */}
     </div>
   )
 }
