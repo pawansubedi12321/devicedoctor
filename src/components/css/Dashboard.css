@@ -2,7 +2,7 @@
     background-color: red;
     width:60px;
 }
-.dashboardpage{
+.dashboardpage,.categorypage{
     background-color: #f0e9f3;
     height:100vh;
 }

@@ -126,8 +126,8 @@ const loginpage = () => {
                   <span className="login">LOGIN</span>
                 </button>
               </div>
-              <div className="forgot">
-                <p className="forgotpass">Forgot Password?</p>
+              <div className="register">
+                <p className="register">Register Now</p>
               </div>
             </form>
           </div>

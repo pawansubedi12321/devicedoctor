@@ -60,9 +60,14 @@ useEffect(() => {
   return (
     <div>
     
-         <div className='categorypage'>
-         <Navbar/>
-         <div className='row imagesection'>
+         <div className='row categorypage'>
+            <div className='col-md-3'>
+            <Navbar/>
+
+            </div>
+         
+         <div className='col-md-9 cate-dd'>
+            <div className='imagesection'>
          {
         category.message==='Category not found'?"":category.map((item,index)=>(
             <>
@@ -75,6 +80,7 @@ useEffect(() => {
             
             ))
         }
+        </div>
 
          </div>
          </div>

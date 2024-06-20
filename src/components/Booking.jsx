@@ -237,9 +237,9 @@ const[userlocation,setuserlocation]=useState("");
         switch (action.type) {
           case 'Recently':
             return { ...state, probleminterval: 'Recently' }; // Return updated state object
-          case 'More than month':
+          case 'Morethanmonth':
             return { ...state, probleminterval: 'More than month' };
-          case 'More than year':
+          case 'Morethanyear':
             return { ...state, probleminterval: 'More than year' };
       
           case 'RESET_TIME':
@@ -292,6 +292,7 @@ const[userlocation,setuserlocation]=useState("");
             }
 
       }, [editdata]);
+    //   console.log("this is editdata bla bla",editdata[0].problem_interval)
       console.log("this is brand",brand);
       console.log("this is time.time",time.time);
       console.log("this is ",editdata)
@@ -501,10 +502,10 @@ const[userlocation,setuserlocation]=useState("");
                       <div className={`${editdata===undefined?"":editdata[0].problem_interval==='Recently'?'click':""}${probleminterval.probleminterval === 'Recently' ? 'clicked' : ""} period`} onClick={() => dispatch3({ type: 'Recently' })}>
                         Recently
                       </div>
-                      <div className={`${editdata===undefined?"":editdata[0].problem_interval==='More than month'?'click':""}${probleminterval.probleminterval === 'More than month' ? 'clicked' : ""} period`} onClick={() => dispatch3({ type: 'More than month' })}>
+                      <div className={`${editdata===undefined?"":editdata[0].problem_interval==='Morethanmonth'?'click':""}${probleminterval.probleminterval === 'Morethanmonth' ? 'clicked' : ""} period`} onClick={() => dispatch3({ type: 'Morethanmonth' })}>
                         More than month
                       </div>
-                      <div className={`${editdata===undefined?"":editdata[0].problem_interval==='More than year'?'click':""}${probleminterval.probleminterval === 'More than year' ? 'clicked' : ""} period`} onClick={() => dispatch3({ type: 'More than year' })}>
+                      <div className={`${editdata===undefined?"":editdata[0].problem_interval==='Morethanyear'?'click':""}${probleminterval.probleminterval === 'Morethanyear' ? 'clicked' : ""} period`} onClick={() => dispatch3({ type: 'Morethanyear' })}>
                         More than Year
                       </div>
 
