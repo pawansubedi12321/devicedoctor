@@ -50,11 +50,11 @@
     width:45px;
     height:45px;
     border-radius: 10px;
-    background-color:#3f219a;
+    background-color:#BD939F;
     display:flex;
     justify-content: center;
     align-items: center;
-    color:antiquewhite;
+    /* color:antiquewhite; */
     margin-left:10px;
     margin-top:10px;
     z-index: 1;

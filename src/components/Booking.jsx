@@ -6,6 +6,8 @@ import { useScrollTrigger } from '@mui/material';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import ModeEditIcon from '@mui/icons-material/ModeEdit';
 import ClearIcon from '@mui/icons-material/Clear';
+import Eyefill from './assets/Eye-fill.svg';
+// import VisibilityRoundedIcon from '@mui/icons-material/VisibilityRounded';
 const Booking = () => {
     const [booking, setbooking] = useState([]);
     // const {user,setuser}= useContext(UserContext);
@@ -45,46 +47,6 @@ const Booking = () => {
     }, [])
 
     console.log("This is booking", booking);
-
-    
-
-    const showbooking = async (booked_problem, id) => {
-        console.log("this is booking", booked_problem);
-        const response = await fetch(`https://pawan2221.pythonanywhere.com/api/v1/user/showproblem/`, {
-            method: 'get',
-
-        })
-
-        if (response.ok) {
-            const responseData = await response.json(); // Parse response JSON
-            console.log("this is without filter", responseData);
-            const bookedproblem = responseData.filter((show) => show.id === booked_problem);
-            console.log("this is bookedproblem", bookedproblem);
-            const book = booking.filter((show) => show.id === id)
-            console.log("this is booking", book);
-            console.log("this is id", id);
-            const data = {
-                bookedproblem: bookedproblem,
-                book: book
-            }
-            navigate('/showbooking', { state: data });
-
-
-            // setbookig(responseData);
-            // setshow(data);
-
-
-
-        }
-        else {
-            console.error("Request failed with status:", response.status);
-        }
-
-        //   
-
-
-
-    }
     const [editdata, seteditdata] = useState();
     const [problem, setproblem] = useState();
     const edit = async (editid, booked_problem) => {
@@ -242,6 +204,9 @@ const[userlocation,setuserlocation]=useState("");
         // console.log("this is bokked date",x);
       
       }
+      const initialState2 = {
+        time: ""
+      }
       const reducer2 = (state, action) => {
         switch (action.type) {
           case '9amto11pm':
@@ -260,9 +225,7 @@ const[userlocation,setuserlocation]=useState("");
             return state;
         }
       }
-      const initialState2 = {
-        time: ""
-      }
+      
       
       
       const [time, dispatch2] = useReducer(reducer2, initialState2);
@@ -274,9 +237,9 @@ const[userlocation,setuserlocation]=useState("");
         switch (action.type) {
           case 'Recently':
             return { ...state, probleminterval: 'Recently' }; // Return updated state object
-          case 'Morethanmonth':
+          case 'More than month':
             return { ...state, probleminterval: 'More than month' };
-          case 'Morethanyear':
+          case 'More than year':
             return { ...state, probleminterval: 'More than year' };
       
           case 'RESET_TIME':
@@ -314,9 +277,25 @@ const[userlocation,setuserlocation]=useState("");
             {
                 setuserlocation(editdata[0].location)
             }
+        if(editdata&& editdata[0]&&editdata[0].phone_number)
+            {
+                setphone(editdata[0].phone_number)
+
+            }
+        if(editdata&& editdata[0]&&editdata[0].time_period)
+            {
+                dispatch2({ type: editdata[0].time_period }); 
+            }
+        if(editdata&& editdata[0]&&editdata[0].problem_interval)
+            {
+                dispatch3({type: editdata[0].problem_interval })
+            }
 
       }, [editdata]);
       console.log("this is brand",brand);
+      console.log("this is time.time",time.time);
+      console.log("this is ",editdata)
+
     const Edit = async () => {
         console.log("this is brand", brand);
         console.log("ths is date", booked);
@@ -351,7 +330,7 @@ const[userlocation,setuserlocation]=useState("");
             if (response.ok) {
                 const responseData = await response.json();
                 console.log(responseData);
-                alert("Booking successful");
+                alert("Edited successful");
             } else {
                 const errorData = await response.json();
                 console.error("Request failed with status:", response.status, errorData);
@@ -407,6 +386,7 @@ const[userlocation,setuserlocation]=useState("");
     return (
         <>
             <div className='row categorypage'>
+                {/* <VisibilityRoundedIcon/> */}
                 <div className='col-md-3'>
                     <Navbar />
                 </div>
@@ -438,7 +418,7 @@ const[userlocation,setuserlocation]=useState("");
                                     </div>
 
                                     <div className='col-md-2 showpage'>
-                                        <div onClick={() => edit(item.id, item.booked_problem)} data-bs-toggle="modal" data-bs-target="#bookingexampleModal" className='edit edit-category'>
+                                        <div onClick={() => edit(item.id, item.booked_problem)} data-bs-toggle="modal" data-bs-target="#bookingexampleModal" className=' show-detail edit edit-category'>
                                             <ModeEditIcon />
                                         </div>
 
@@ -447,17 +427,17 @@ const[userlocation,setuserlocation]=useState("");
 
 
 
-                                        <div class="modal fade" id={"bookingexampleModal"} tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                            <div class="modal-xl modal-dialog" >
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <h5 class="modal-title" id="exampleModalLabel">Create Booking</h5>
-                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        <div className="modal fade" id={"bookingexampleModal"} tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div className="modal-xl modal-dialog" >
+                                                <div className="modal-content">
+                                                    <div className="modal-header">
+                                                        <h5 className="modal-title" id="exampleModalLabel">Create Booking</h5>
+                                                        <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 
                                                      
 
                                                     </div>
-                                                    <div class="modal-body">
+                                                    <div className="modal-body">
                                                         <div className='row'>
                                                             <div className='col-md-6'>
                                                                 <div>
@@ -487,9 +467,9 @@ const[userlocation,setuserlocation]=useState("");
                 
                  
                  
-  <input type="text" onChange={selectedbrand} defaultValue={editdata===undefined?"":editdata[0].selected_brand} class=" brand " placeholder="Do write your brands" aria-label="Username" aria-describedby="basic-addon1"/>
+  <input type="text" onChange={selectedbrand} defaultValue={editdata===undefined?"":editdata[0].selected_brand} className=" brand " placeholder="Do write your brands" aria-label="Username" aria-describedby="basic-addon1"/>
   <label className='date'>Date:</label>
-  <input onChange={bookeddate}defaultValue={editdata===undefined?"":editdata[0].booked_date} class='brand'type='date'/>
+  <input onChange={bookeddate}defaultValue={editdata===undefined?"":editdata[0].booked_date} className='brand'type='date'/>
   </form>
 
   <p className='displaytime'>Time:</p>
@@ -513,7 +493,7 @@ const[userlocation,setuserlocation]=useState("");
                   </div>
                   
 
-                  <input type="text"onChange={location} defaultValue={editdata===undefined?"":editdata[0].location} class=" brand location " placeholder="Enter your location" aria-label="Username" aria-describedby="basic-addon1"/>
+                  <input type="text"onChange={location} defaultValue={editdata===undefined?"":editdata[0].location} className=" brand location " placeholder="Enter your location" aria-label="Username" aria-describedby="basic-addon1"/>
 
 
                   <h1 className='displaytime'>Problem Interval</h1>
@@ -521,19 +501,19 @@ const[userlocation,setuserlocation]=useState("");
                       <div className={`${editdata===undefined?"":editdata[0].problem_interval==='Recently'?'click':""}${probleminterval.probleminterval === 'Recently' ? 'clicked' : ""} period`} onClick={() => dispatch3({ type: 'Recently' })}>
                         Recently
                       </div>
-                      <div className={`${editdata===undefined?"":editdata[0].problem_interval==='More than month'?'click':""}${probleminterval.probleminterval === 'More than month' ? 'clicked' : ""} period`} onClick={() => dispatch3({ type: 'Morethanmonth' })}>
+                      <div className={`${editdata===undefined?"":editdata[0].problem_interval==='More than month'?'click':""}${probleminterval.probleminterval === 'More than month' ? 'clicked' : ""} period`} onClick={() => dispatch3({ type: 'More than month' })}>
                         More than month
                       </div>
-                      <div className={`${editdata===undefined?"":editdata[0].problem_interval==='More than year'?'click':""}${probleminterval.probleminterval === 'More than year' ? 'clicked' : ""} period`} onClick={() => dispatch3({ type: 'Morethanyear' })}>
+                      <div className={`${editdata===undefined?"":editdata[0].problem_interval==='More than year'?'click':""}${probleminterval.probleminterval === 'More than year' ? 'clicked' : ""} period`} onClick={() => dispatch3({ type: 'More than year' })}>
                         More than Year
                       </div>
 
                     </div>
                     
 
-                    <input type="text"  onChange={description}  defaultValue={editdata===undefined?"":editdata[0].description}class=" brand location " placeholder="Description" aria-label="Username" aria-describedby="basic-addon1"/>
-                    <input type="text"onChange={phonenumber} defaultValue={editdata===undefined?"":editdata[0].phone_number}class=" brand location " placeholder="phonenumber" aria-label="Username" aria-describedby="basic-addon1"/>
-                    <button type="button"onClick={Edit} class=" btn-btn-primary brand margin-top col-md-6 col-sm-6 col-6 booked-btn btn-primary"><span className='book'>Edit</span></button>
+                    <input type="text"  onChange={description}  defaultValue={editdata===undefined?"":editdata[0].description}className=" brand location " placeholder="Description" aria-label="Username" aria-describedby="basic-addon1"/>
+                    <input type="text"onChange={phonenumber} defaultValue={editdata===undefined?"":editdata[0].phone_number}className=" brand location " placeholder="phonenumber" aria-label="Username" aria-describedby="basic-addon1"/>
+                    <button type="button"onClick={Edit} className=" btn-btn-primary brand margin-top col-md-6 col-sm-6 col-6 booked-btn btn-primary"><span className='book'>Edit</span></button>
 
 
                 
@@ -546,12 +526,14 @@ const[userlocation,setuserlocation]=useState("");
                                                 </div>
                                             </div>
                                         </div>
-                                        <div className='delete delete-category' onClick={() => Delete(item.id)}>
-                                            <ClearIcon />
+                                        <div className='delete show-detail delete-category' onClick={() => Delete(item.id)}>
+                                            < ClearIcon />
                                         </div>
 
-                                        <div className='delete delete-category' onClick={() => show(item.id)}>
+                                        <div className='delete show-detail delete-category' onClick={() => show(item.id)}>
+                                        <img src={Eyefill}/>
                                             {/* <ClearIcon /> */}
+                                          
                                         </div>
                                     </div>
 

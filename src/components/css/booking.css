@@ -40,7 +40,7 @@
 .appoint{
     width:260px;
     height:60px;
-    background-color:orange;
+    background-color:#be3056;
     border-radius: 10px;
     display:flex;
     justify-content: center;
@@ -50,17 +50,21 @@
 .pending{
     width:260px;
     height:60px;
-    background-color:yellow;
+    background-color:#95868a;
     border-radius: 10px;
     display:flex;
     justify-content: center;
     align-items: center;
+    
 
+}
+.show-details{
+    color:black;
 }
 .onwork{
     width:260px;
     height:60px;
-    background-color:red;
+    background-color:#9e3838;
     border-radius: 10px;
     display:flex;
     justify-content: center;
@@ -70,7 +74,7 @@
 .completed{
     width:260px;
     height:60px;
-    background-color:green;
+    background-color:#e39c9c;
     border-radius: 10px;
     display:flex;
     justify-content: center;
