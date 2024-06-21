@@ -20,6 +20,7 @@ const loginpage = () => {
     const x = e.target.value;
     setpassword(x);
   };
+  const[message,setmessage]=useState();
   const login = async (e) => {
     e.preventDefault();
     try {
@@ -49,16 +50,21 @@ const loginpage = () => {
         localStorage.setItem("accesstoken", responseData.tokens.access);
         localStorage.setItem("refreshtoken", responseData.tokens.refresh);
         localStorage.setItem("id", responseData.data.id);
-        localStorage.setItem("username", responseData.message);
+        localStorage.setItem("username", responseData.data.username);
         localStorage.setItem("district", responseData.data.district);
         localStorage.setItem("gender", responseData.data.gender);
         localStorage.setItem("phone_number", responseData.data.phone_number);
         localStorage.setItem("profile_image", responseData.data.profile_image);
+        alert(responseData.message)
         // Log the response data
         navigate("/dashboard", { state: responseData });
       } else {
         console.error("Request failed with status:", response.status);
-        alert("password incorrect");
+        const responseData = await response.json(); // Parse response JSON
+        console.log(responseData.message);
+        // setmessage(responseData);
+        // alert("password incorrect");
+        alert(responseData.message);
       }
     } catch (error) {
       console.error("Error:", error);
@@ -72,6 +78,9 @@ const loginpage = () => {
     setshow(!show);
     console.log(show);
   };
+  const register=()=>{
+    navigate('/register');
+  }
   return (
     <>
       <div className="section-padding login-bg">
@@ -79,6 +88,9 @@ const loginpage = () => {
           <div className="col-md-6 login-332">
             <img src={WhiteLogo1} alt="xitoimg" className="xitoimg" />
           </div>
+
+
+
           <div className="col-md-6 loginpage">
             <div className="header">
               <h1 className="welcome">welcome</h1>
@@ -126,11 +138,13 @@ const loginpage = () => {
                   <span className="login">LOGIN</span>
                 </button>
               </div>
-              <div className="register">
-                <p className="register">Register Now</p>
+              <div className="registernow">
+                <p className="register"onClick={register}>Register Now</p>
               </div>
             </form>
           </div>
+
+          
         </div>
       </div>
     </>

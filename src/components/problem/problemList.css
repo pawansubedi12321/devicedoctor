@@ -83,11 +83,11 @@
 
 }
 .clicked{
-    background-color:#cedbf6  !important;
+    background-color:#cedbf6;
     color:#FFF !important;
 }
 .click{
-    background-color:#999ca4 ;
+    background-color:#999ca4 !important ;
 }
 .period{
     width:150px;

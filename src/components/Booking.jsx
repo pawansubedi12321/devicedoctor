@@ -237,9 +237,9 @@ const[userlocation,setuserlocation]=useState("");
         switch (action.type) {
           case 'Recently':
             return { ...state, probleminterval: 'Recently' }; // Return updated state object
-          case 'Morethanmonth':
+          case 'More than month':
             return { ...state, probleminterval: 'More than month' };
-          case 'Morethanyear':
+          case 'More than year':
             return { ...state, probleminterval: 'More than year' };
       
           case 'RESET_TIME':
@@ -282,6 +282,10 @@ const[userlocation,setuserlocation]=useState("");
                 setphone(editdata[0].phone_number)
 
             }
+        if(editdata&& editdata[0]&&editdata[0].description)
+            {
+                setuserdescription(editdata[0].description)
+            }
         if(editdata&& editdata[0]&&editdata[0].time_period)
             {
                 dispatch2({ type: editdata[0].time_period }); 
@@ -290,8 +294,16 @@ const[userlocation,setuserlocation]=useState("");
             {
                 dispatch3({type: editdata[0].problem_interval })
             }
+            // if(editdata&& editdata[0]&&editdata[0].time_period)
+            //     {
+            //         console.log("this is edited data",editdata[0].time_period);
+            //     }
+            
 
       }, [editdata]);
+
+      
+    //   console.log("this is editdata problem interval",editdata[0].proble)
     //   console.log("this is editdata bla bla",editdata[0].problem_interval)
       console.log("this is brand",brand);
       console.log("this is time.time",time.time);
@@ -382,6 +394,8 @@ const[userlocation,setuserlocation]=useState("");
 
 
     }
+    // console.log("this is edited bla bka data",editdata[0].problem_interval);
+
     
 
     return (
@@ -479,16 +493,18 @@ const[userlocation,setuserlocation]=useState("");
                     <div className={`${editdata===undefined?"":editdata[0].time_period==='9amto11pm'?'click':""} ${time.time === '9amto11pm' ? "clicked" : ""} period`} onClick={() => dispatch2({ type: '9amto11pm' })}>
                       9:00Am to 11Am
                     </div>
-                    <div className={`${editdata===undefined?"":editdata[0].time_period==='12amto2pm'?'click':""}${time.time === '12amto2pm' ? "clicked" : ""} period`} onClick={() => dispatch2({ type: '12amto2pm' })}>
+                                   {/* ${editdata===undefined?"":editdata[0].problem_interval==='Recently'?'click':""} */}
+                                                             {/* editdata[0].time_period */}
+                    <div className={`${editdata===undefined?"":editdata[0].time_period==='12amto2pm'?'click':""} ${time.time === '12amto2pm' ? "clicked" : ""} period`} onClick={() => dispatch2({ type: '12amto2pm' })}>
                       12:AM to 2PM
                     </div>
-                    <div className={`${editdata===undefined?"":editdata[0].time_period==='2amto2pm'?'click':""}${time.time === '2amto2pm' ? "clicked" : ""} period`} onClick={() => dispatch2({ type: '2amto2pm' })}>
+                    <div className={`${editdata===undefined?"":editdata[0].time_period==='2amto2pm'?'click':""} ${time.time === '2amto2pm' ? "clicked" : ""} period`} onClick={() => dispatch2({ type: '2amto2pm' })}>
                       2:AM to 2PM
                     </div>
                     <div className={`${editdata===undefined?"":editdata[0].time_period==='2pmto4pm'?'click':""} ${time.time === '2pmto4pm' ? "clicked" : ""} period`} onClick={() => dispatch2({ type: '2pmto4pm' })}>
                       2:PM to 4PM
                     </div>
-                    <div className={`${editdata===undefined?"":editdata[0].time_period==='4pmto6pm'?'click':""}${time.time === '4pmto6pm' ? "clicked" : ""} period`} onClick={() => dispatch2({ type: '4pmto6pm' })}>
+                    <div className={`${editdata===undefined?"":editdata[0].time_period==='4pmto6pm'?'click':""} ${time.time === '4pmto6pm' ? "clicked" : ""} period`} onClick={() => dispatch2({ type: '4pmto6pm' })}>
                       4:PM to 6PM
                     </div>
                   </div>
@@ -499,13 +515,13 @@ const[userlocation,setuserlocation]=useState("");
 
                   <h1 className='displaytime'>Problem Interval</h1>
                     <div className='margin-left probleminterval'>
-                      <div className={`${editdata===undefined?"":editdata[0].problem_interval==='Recently'?'click':""}${probleminterval.probleminterval === 'Recently' ? 'clicked' : ""} period`} onClick={() => dispatch3({ type: 'Recently' })}>
+                      <div className={`${editdata===undefined?"":editdata[0].problem_interval==='Recently'?'click':""} ${probleminterval.probleminterval === 'Recently' ? 'clicked' : ""} period`} onClick={() => dispatch3({ type: 'Recently' })}>
                         Recently
                       </div>
-                      <div className={`${editdata===undefined?"":editdata[0].problem_interval==='Morethanmonth'?'click':""}${probleminterval.probleminterval === 'Morethanmonth' ? 'clicked' : ""} period`} onClick={() => dispatch3({ type: 'Morethanmonth' })}>
+                      <div className={`${editdata===undefined?"":editdata[0].problem_interval==='More than month'?'click':""} ${probleminterval.probleminterval === 'More than month' ? 'clicked' : ""} period`} onClick={() => dispatch3({ type: 'More than month' })}>
                         More than month
                       </div>
-                      <div className={`${editdata===undefined?"":editdata[0].problem_interval==='Morethanyear'?'click':""}${probleminterval.probleminterval === 'Morethanyear' ? 'clicked' : ""} period`} onClick={() => dispatch3({ type: 'Morethanyear' })}>
+                      <div className={`${editdata===undefined?"":editdata[0].problem_interval==='More than year'?'click':""} ${probleminterval.probleminterval === 'More than year' ? 'clicked' : ""} period`} onClick={() => dispatch3({ type: 'More than year' })}>
                         More than Year
                       </div>
 

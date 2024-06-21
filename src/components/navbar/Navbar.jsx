@@ -13,11 +13,24 @@ const Navbar = () => {
     const booking=()=>{
       navigate('/booking');
     }
+    const logout=()=>{
+      localStorage.removeItem('accesstoken');
+        localStorage.removeItem("refreshtoken");
+        localStorage.removeItem("id");
+        localStorage.removeItem("username");
+        localStorage.removeItem("phone_number");
+        localStorage.removeItem("profile_image");
+        localStorage.removeItem("gender");
+        localStorage.removeItem("district");
+        alert('logout successfully');
+      navigate('/');
+      
+    }
     const welcomeuser=localStorage.getItem('username');
   return (
     <div className='navbar'>
       <ul>
-        <li className='user'>{welcomeuser}</li>
+        <li className='user'>Welcome,{welcomeuser}</li>
         <li>
           <div onClick={category} className='nav'>
           Category
@@ -26,6 +39,7 @@ const Navbar = () => {
         <li>
           <div onClick={dashboard} className='nav'>Dashboard</div></li>
         <li><div onClick={booking} className='nav'>Booking</div></li>
+        <li><div onClick={logout} className='nav'>Logout</div></li>
 
         <li className='designby'>design by pawan subedi and prashant lama</li>
 

@@ -85,10 +85,11 @@
     position:absolute;
     margin-top:200px;
   }
-  .forgotpass{
+  .register{
     color:#690D93 !important;
     margin-top: 15px;
     font-family: FullSans;
+    cursor: pointer;
     /* font-weight: 900; */
     /* margin-left:210px; */
     font-size: 30px;
@@ -244,6 +245,9 @@
         position:unset;
         height:7vh;
         background-color: #980ed9 !important;
+    }
+    .gender{
+      margin-top:15px;
     }
 
     /* .eye{

@@ -28,6 +28,7 @@ import EditCategory from "../components/edit/EditCategory";
 import EditProblem from '../components/edit/Editproblem';
 import EditBooking from "../components/EditBooking";
 import Problem from "../components/problem/Problem";
+import Register from "../components/Register";
 const PublicRoutes = () => {
     
   return (
@@ -47,6 +48,7 @@ const PublicRoutes = () => {
             <Route path='/editcategory'element={<EditCategory/>}></Route>
             <Route path='/editproblem'element={<EditProblem/>}></Route>
             <Route path='/editbooking'element={<EditBooking/>}></Route>
+            <Route path='/register'element={<Register/>}></Route>
         </Routes>
         </BrowserRouter>
     </div>
