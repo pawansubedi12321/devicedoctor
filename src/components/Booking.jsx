@@ -133,7 +133,7 @@ const Booking = () => {
     const Delete = async (id) => {
 
         try {
-            const response = await fetch(`http://127.0.0.1:8000/api/v1/user/deletebooking/${id}/`, {
+            const response = await fetch(`http://127.0.0.1:8000/api/v1/user/delete/${id}/`, {
                 method: "DELETE",
                 // body: JSON.stringify(datavalue),
                 headers: {
@@ -152,37 +152,34 @@ const Booking = () => {
                 // navigate("/dashboard", { state: responseData });
             } else {
                 console.error("Request failed with status:", response.status);
-                alert("password incorrect");
+                alert("delete failed");
             }
         } catch (error) {
             console.error("Error:", error);
         }
 
+        const userid = localStorage.getItem("id");
+            const response = await fetch(`http://127.0.0.1:8000/api/v1/user/getbooking/${userid}/`, {
+                method: 'get',
+                headers: {
+                    // "Content-Type": "application/json",
+                    // Include the access token in the Authorization header
+                    "Authorization": `Bearer ${accessToken}`
+                },
+
+            })
+
+            if (response.ok) {
+                const responseData = await response.json(); // Parse response JSON
+                setbooking(responseData);
+                console.log("this is response Data", responseData);
 
 
+            }
+            else {
+                console.error("Request failed with status:", response.status);
+            }
 
-
-
-        const response = await fetch(`http://127.0.0.1:8000/api/v1/user/getbooking/`, {
-            method: 'get',
-            headers: {
-                // "Content-Type": "application/json",
-                // Include the access token in the Authorization header
-                "Authorization": `Bearer ${accessToken}`
-            },
-
-        })
-
-        if (response.ok) {
-            const responseData = await response.json(); // Parse response JSON
-            setbooking(responseData);
-            console.log("this is response Data", responseData);
-
-
-        }
-        else {
-            console.error("Request failed with status:", response.status);
-        }
     }
     const [brand, setbrand]=useState()
 const[booked,setbooked]=useState("");
@@ -344,6 +341,7 @@ const[userlocation,setuserlocation]=useState("");
                 const responseData = await response.json();
                 console.log(responseData);
                 alert("Edited successful");
+                navigate('/booking');
             } else {
                 const errorData = await response.json();
                 console.error("Request failed with status:", response.status, errorData);
@@ -395,7 +393,9 @@ const[userlocation,setuserlocation]=useState("");
 
     }
     // console.log("this is edited bla bka data",editdata[0].problem_interval);
-
+    const close=()=>{
+        
+    }
     
 
     return (
@@ -422,7 +422,7 @@ const[userlocation,setuserlocation]=useState("");
 
                                     </div>
 
-                                    <div className='col-md-3 status'>
+                                    <div className='col-md-6 status'>
                                         <div className={`${item.status === 'appoint' ? 'appoint' : ''}
                           ${item.status === 'pending' ? 'pending' : ''}
                                 ${item.status === 'onwork' ? 'onwork' : ''}
@@ -447,7 +447,7 @@ const[userlocation,setuserlocation]=useState("");
                                                 <div className="modal-content">
                                                     <div className="modal-header">
                                                         <h5 className="modal-title" id="exampleModalLabel">Create Booking</h5>
-                                                        <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                        <button type="button" className="btn-close" data-bs-dismiss="modal"onClick={close} aria-label="Close"></button>
 
                                                      
 
